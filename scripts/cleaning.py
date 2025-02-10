@@ -67,3 +67,5 @@ a = data['product_code'].nunique()
 print(f'Después del filtro {a}')
 data.to_csv(f's3://{pbucket}/{pcliente}/data_procesada/df_preprocesada.csv', index=False)
 print("Data Preprocesada")
+
+## demo cicd

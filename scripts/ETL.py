@@ -145,3 +145,5 @@ ventas.to_parquet(f's3://{pbucket}/{pcliente}/data_procesada/df.parquet', index=
 ventas.to_parquet(f's3://{abucket}/{pcliente}/data_procesada/parquet/df.parquet', index=False)          # analytics
 
 print("ETL terminado")
+
+## demo cicd
