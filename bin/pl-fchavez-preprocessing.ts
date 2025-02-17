@@ -20,7 +20,7 @@ const commonTags = {
 const pl_bucket = 'pricelab-mlops-prod';
 const pl_client = 'c-farmaciaschavez';
 const pl_product = 'preprocessing';
-const pl_modelv = 'mv2';
+const pl_modelv = 'mv3';
 
 const app = new cdk.App();
 
