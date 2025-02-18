@@ -111,12 +111,12 @@ q = """
                 WHEN tipo_cliente.CodCli IS NULL THEN 'NO'
                 ELSE 'SI'
                 END AS CLI_LDC,
-            -- scrap.competitor_original_price as Precio_cc,
-            CASE
-                WHEN convert = 'UNIDAD' THEN scrap.competitor_original_price/convert_value
-                WHEN convert = 'CAJA' THEN scrap.competitor_original_price*convert_value
-                ELSE scrap.competitor_original_price
-                END AS Precio_cc,
+            scrap.competitor_original_price as Precio_cc,
+            -- CASE
+            --    WHEN convert = 'UNIDAD' THEN scrap.competitor_original_price/convert_value
+            --    WHEN convert = 'CAJA' THEN scrap.competitor_original_price*convert_value
+            --    ELSE scrap.competitor_original_price
+            --    END AS Precio_cc,
             scrap.stock_producto as Stock_cc
     FROM ventas
     LEFT JOIN productos ON ventas.CodChavez = productos.SkuProducto
