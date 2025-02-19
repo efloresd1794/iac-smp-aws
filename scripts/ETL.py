@@ -147,3 +147,4 @@ ventas.to_parquet(f's3://{abucket}/{pcliente}/data_procesada/parquet/df.parquet'
 print("ETL terminado")
 
 ## demo cicd
+# demo eflores
