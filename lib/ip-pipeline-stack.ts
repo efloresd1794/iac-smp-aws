@@ -4,22 +4,19 @@ import * as sagemaker from 'aws-cdk-lib/aws-sagemaker';
 import { Construct } from 'constructs';
 import * as fs from 'fs';
 
-//props
-interface PlFchavezPreprocessingStackProps extends cdk.StackProps {
+interface IPPipelineStackStackProps extends cdk.StackProps {
   bucketName: string;
   clientName: string;
-  productName: string;
-  modelVersion: string;
 }
 
-export class PlFchavezPreprocessingStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props: PlFchavezPreprocessingStackProps) {
+export class IPPipelineStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props: IPPipelineStackStackProps) {
     super(scope, id, props);
 
-    const { clientName, productName, modelVersion } = props;
+    const { bucketName, clientName } = props;
     
-    const pipelineName = `pipeline-${clientName}-${productName}-${modelVersion}`;
-    const definitionFile = `pd-${clientName}-${productName}-${modelVersion}.json`;
+    const pipelineName = `pipeline-${clientName}`;
+    const definitionFile = `sm-pipeline-${clientName}.json`;
 
     const pipelineRole = new iam.Role(this, 'SageMakerPipelineRole', {
       assumedBy: new iam.ServicePrincipal('sagemaker.amazonaws.com'),
@@ -30,9 +27,7 @@ export class PlFchavezPreprocessingStack extends cdk.Stack {
       ],
     });
 
-    // Load the pipeline definition JSON
     const pipelineDefinition = JSON.parse(
-      // how define name based on stack props
       fs.readFileSync(definitionFile, 'utf8')
     );
     

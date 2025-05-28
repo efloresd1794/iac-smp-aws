@@ -4,30 +4,25 @@ import * as s3deploy from 'aws-cdk-lib/aws-s3-deployment';
 import { Construct } from 'constructs';
 import * as path from 'path';
 
-//props
-interface PlScriptsStackProps extends cdk.StackProps {
+interface IPScriptsStackProps extends cdk.StackProps {
   bucketName: string;
   clientName: string;
-  productName: string;
-  modelVersion: string;
 }
 
-export class PlScriptsStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props: PlScriptsStackProps) {
+export class IPScriptsStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props: IPScriptsStackProps) {
     super(scope, id, props);
 
-    const { bucketName, clientName, productName, modelVersion } = props;
-    
-    const s3path = `${clientName}/${productName}/${modelVersion}/scripts`;
-    
-    // Define bucket
+    const { bucketName, clientName } = props;
+
+    const s3path = `${clientName}/scripts`;
+
     const bucket = s3.Bucket.fromBucketName(
       this, 
       'ExistingBucket',
       bucketName
     );
 
-    // Deploy scripts to S3
     new s3deploy.BucketDeployment(this, 'DeployScripts', {
       sources: [s3deploy.Source.asset(path.join(__dirname, '..', 'scripts'))],
       destinationBucket: bucket,
