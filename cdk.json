@@ -1,5 +1,5 @@
 {
-  "app": "npx ts-node --prefer-ts-exts bin/ip-preprocessing.ts",
+  "app": "npx ts-node --prefer-ts-exts bin/ip-pipeline.ts",
   "watch": {
     "include": [
       "**"

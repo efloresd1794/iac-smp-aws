@@ -22,13 +22,13 @@ const g_client = 'client-n1';
 
 const app = new cdk.App();
 
-const plfchavezppstack = new IPPipelineStack(app, 'PlFchavezPreprocessingStack', {
+const plfchavezppstack = new IPPipelineStack(app, 'IPPipelineStack', {
   bucketName: g_bucket,
   clientName: g_client,
   env
 });
 
-const plfchavezspstack = new IPScriptsStack(app, 'PlScriptsPreprocessingStack',{
+const plfchavezspstack = new IPScriptsStack(app, 'IPScriptsStack',{
   bucketName: g_bucket,
   clientName: g_client,
   env
